@@ -3,8 +3,8 @@ import footer from '../../assets/images/footer.png';
 
 function Footer() {
     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    var d = new Date();
-    var monthName = months[d.getMonth()];
+    var date = new Date();
+    var monthName = months[date.getMonth()];
     return (
         <footer
             style={{
