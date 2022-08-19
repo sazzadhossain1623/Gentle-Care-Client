@@ -5,6 +5,17 @@ function Footer() {
     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     var date = new Date();
     var monthName = months[date.getMonth()];
+
+        var days = new Array(7);
+        days[0] = "Sunday";
+        days[1] = "Monday";
+        days[2] = "Tuesday";
+        days[3] = "Wednesday";
+        days[4] = "Thursday";
+        days[5] = "Friday";
+        days[6] = "Saturday";
+        var day = days[date.getDay()];
+
     return (
         <footer
             style={{
@@ -36,7 +47,7 @@ function Footer() {
                 </div>
             </div>
             <div className='my-10 text-center'>
-                <p>Copyright © {new Date().getDate()} {monthName}, {new Date().getFullYear()} || All right reserved by Gentle Care</p>
+                <p className='bg-red-50 py-2 font-bold'>Copyright © {day}, {monthName} {new Date().getDate()}, {new Date().getFullYear()} || All Rights Reserved by Gentle Care.</p>
             </div>
         </footer>
     )

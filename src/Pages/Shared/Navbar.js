@@ -1,14 +1,31 @@
+import { signOut } from 'firebase/auth';
 import React from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom'
+import auth from '../../firebase.init';
 
 function Navbar() {
+
+    const [user] = useAuthState(auth);
+
+    const logout = () => {
+        signOut(auth);
+    };
+
     const menuItems = <>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/appointment">Appointment</Link></li>
-        <li><Link to="/review">Review</Link></li>
-        <li><Link to="/contact">Contact</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/login">Login</Link></li>
+        <li className='text-secondary font-bold'><Link to="/">Home</Link></li>
+        <li className='text-secondary font-bold'><Link to="/appointment">Appointment</Link></li>
+        <li className='text-secondary font-bold'><Link to="/review">Review</Link></li>
+        <li className='text-secondary font-bold'><Link to="/contact">Contact</Link></li>
+        <li className='text-secondary font-bold'><Link to="/about">About</Link></li>
+        <li className='text-secondary font-bold'>
+            {user ?
+                <div>
+                    <button onClick={logout} className="text-red-500 font-bold">Sign Out &larr;</button>
+                    <p className='text-[#2E86C1] font-bold'>{user?.displayName.split(' ')[0]}</p>
+                </div>
+                : <Link to="/login">Login</Link>}
+        </li>
     </>
     return (
         <div className="navbar bg-base-100">
@@ -25,7 +42,7 @@ function Navbar() {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
-                {menuItems}
+                    {menuItems}
                 </ul>
             </div>
         </div>
