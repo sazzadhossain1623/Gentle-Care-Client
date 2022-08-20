@@ -13,7 +13,7 @@ function Service({ service, setTreatment }) {
                             : <span className='text-[red]'>Sorry!! Try Another Date.</span>
                     }
                 </p>
-                <p>{slots.length} {slots.length > 1 ? 'spaces' : 'space'} available.</p>
+                <p>{slots.length} {slots.length > 1 ? 'Spaces' : 'Space'} Available.</p>
                 <div className="card-actions justify-center">
                     <label
                         htmlFor="booking-modal"
